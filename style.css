@@ -1,3 +1,5 @@
 body {
-    background: slategray;
+    background-image: linear-gradient(slategray, skyblue);
+    min-height:100vh;
+    /*background: slategray;*/
 }
