@@ -1,0 +1,21 @@
+BODY{
+    background: radial-gradient(skyblue, slategray);
+    background-size: 100vh, 100vw;
+}
+.company-bar{
+    background-color: slategray
+}
+
+.card{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    background-color: slategray;
+}
+
+.footnote{
+    font-size: 15px;
+    font-family: 'Bilbo', 'Times New Roman', Times, serif;
+    color: slategray;
+}

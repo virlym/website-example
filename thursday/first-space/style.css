@@ -1,0 +1,48 @@
+body{
+    background-color: slategray;
+    font-family: 'Dancing Script', cursive;
+    color: rgb(109, 16, 16);
+}
+
+p {
+    text-indent: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.first-para {
+    font-weight: bold;
+    font-family: 'Akronim', serif;
+    
+}
+
+.first-para:hover{
+    color: black;
+}
+
+.second-para {
+    font-size: 24px;
+    font-family: 'Alex Brush', cursive;
+}
+
+.second-para::selection {
+    color: white;
+    background: purple;
+}
+
+.third-para{
+    line-height: 50px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Almendra Display', serif;
+    transform: rotate(180deg);
+}
+.third-para:hover {
+    color: white;
+    background: green;
+}
+
+.footnote{
+    font-size: 15px;
+    font-family: 'Bilbo', 'Times New Roman', Times, serif;
+    color: slategray;
+}
