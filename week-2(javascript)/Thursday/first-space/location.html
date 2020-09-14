@@ -1,0 +1,104 @@
+<!-- 
+Instructions
+
+
+From scratch, create a small application that will do two things:
+
+
+Check which OS the user is on and alert a message that says, "Welcome, Windows user!" or, "Welcome, Mac user!"
+
+
+Then check their geolocation and redirect them to a new page depending on if they are located in the eastern or western half of the USA.
+
+
+
+
+You'll need to do some research on how to gather some of this information, but here's a hint: it's going to be part of the window object we just looked at.
+-->
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>My First Object</title>
+  </head>
+  <body>
+
+    <script>
+         var operatingSystem = "Not known"; 
+        if (navigator.appVersion.indexOf("Win") != -1){
+            operatingSystem =  "Windows OS"; 
+        }
+        if (navigator.appVersion.indexOf("Mac") != -1){
+            operatingSystem = "MacOS";
+        } 
+        // if (navigator.appVersion.indexOf("X11") != -1){
+        //     operatingSystem = "UNIX OS"; 
+        // }
+        // if (navigator.appVersion.indexOf("Linux") != -1){
+        //     operatingSystem = "Linux OS"; 
+        // }
+
+        if (operatingSystem === "Windows OS"){
+            alert("Welcome Windows user");
+        }
+        if (operatingSystem === "MacOS"){
+            alert("Welcome Mac user");
+        }
+        // if (operatingSystem === "UNIX OS"){
+        //     alert("Welcome UNIX user");
+        // }
+        // if (operatingSystem === "Linux OS"){
+        //     alert("Welcome Linux user");
+        // }
+
+        var countrySide = "none";
+        
+
+        navigator.geolocation.getCurrentPosition(function(position){
+            console.log(position);
+            var userLat = position.coords.latitude;
+            var userLong = position.coords.longitude;
+            console.log(userLat);
+            console.log(userLong);
+            if(userLong < -117){
+                countrySide = "west"
+            }
+            if(userLong > -87){
+                countrySide = "west"
+            }
+            if(countrySide === "east"){
+                console.log("east coast");
+                // window.location.href = "east.html";
+            }
+            if(countrySide === "west"){
+                console.log("west coast");
+                //window.location.href = "west.html";
+            }
+
+        }
+        );
+
+        
+
+        console.log("hi");
+        console.log(window);
+
+        var x = document.getElementById("demo");
+        function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+        }
+
+        function showPosition(position) {
+            console.log("Latitude: " + position.coords.latitude);
+            console.log("Longitude: " + position.coords.longitude);
+        }
+
+    </script>
+    
+  </body>
+</html>

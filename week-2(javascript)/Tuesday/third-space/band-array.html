@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Array Activity - Unsolved</title>
+  </head>
+  <body>
+
+    <h1>Open the console to see the magic!</h1>
+
+    <script type="text/javascript">
+
+      // Fill in the question marks with what the output will be.
+      var bands = ["the offspring", "the primals", "neffex"];
+      userBand = prompt("What band do you think I like");
+      
+      var same = false;
+      for(var i = 0; i < bands.length; i++){
+        if(userBand.toLowerCase() === bands[i]){
+            same = true;
+        }
+      }
+     
+     if(same ===true){
+        alert("YEAH I LOVE THEM!");
+     }
+     else if(same != true){
+        alert("Nah. They're pretty lame.");
+     }
+
+     
+     //alternatively 
+     if(bands.indexOf(userBand.toLowerCase()) > -1){
+        alert("YEAH I LOVE THEM!");
+     }
+     else if(bands.indexOf(userBand.toLowerCase()) === -1){
+        alert("Nah. They're pretty lame.");
+     }
+    </script>
+
+  </body>
+</html>

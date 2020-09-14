@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Steak Prompt</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+    
+    // Write code here!
+    // Notice that the confirm and prompt take in variables but the alert doesn't
+    var likeSteak = confirm("Do you like steak?");
+    if(likeSteak == true){
+        alert("Here's a Steak Sandwich!");
+    }
+    else if(likeSteak != true){
+        alert("Here’s a Tofu Stir-Fry!");
+    }
+
+    var birthday = new Date(prompt('What is your birthdate? (yyyy-mm-dd)'))
+    var currentDate = new Date();
+    
+    var age = currentDate.getFullYear() - birthday.getFullYear();
+    var m = currentDate.getMonth() - birthday.getMonth();
+    if (m < 0 || (m === 0 && currentDate.getDate() < birthday.getDate())) {
+        age--;
+    }
+    if(age < 21){
+        alert("No Sake for you!");
+    }
+
+
+//BONUS: Ask what the user’s birth year is. If they are under 21, alert the following: "No Sake for you!"
+
+    </script>
+
+  </body>
+</html>

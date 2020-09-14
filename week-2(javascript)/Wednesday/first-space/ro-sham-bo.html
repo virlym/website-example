@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ro-Sham-Bo</title>
+  </head>
+  <body>
+
+    <h1>Simple Ro-Sham-Bo game with the computer</h1>
+
+    <script>
+
+    /*
+        variables needed :
+        -your choice
+        -computer's choice
+        -win count
+        -loss count
+        -tie count
+        -choice array
+        -play again bool
+
+        use prompt to get user input
+        generate random computer choice
+        if statement check for outcome
+        print results
+        confirm to play again
+
+    */ 
+    
+    //initialize variables for first play
+    var winCount = 0;
+    var lossCount = 0;
+    var tieCount = 0;
+    var moveChoice = ["r", "p", "s"];
+    var playAgain = true;
+    var directionally = true;
+    
+    //continue playing for as long as the user wants
+    while(playAgain){
+        //reset choices
+        var playerChoice = "";
+        var computerChoice = "";
+
+        //get player's choice
+        playerChoice = prompt("What do you choose? 'r', 'p', or 's'?");
+
+        //random computer choice between 0-2
+        var rand = Math.floor(Math.random()*moveChoice.length);
+    
+        //console.log(rand);
+        //get computer's choice from the array
+        computerChoice = moveChoice[rand];
+
+        //console.log(computerChoice);
+
+        //if statement comparisons:
+        //player didn't follow directions
+        if(playerChoice !== "r" &&
+        playerChoice !== "p" &&
+        playerChoice !== "s"){
+            //end the game due to not following directions
+            alert("It seems you can't follow directions. Maybe next time.");
+            directionally = false;
+            playAgain = false;
+        }
+        //player won
+        else if((playerChoice === "s" && computerChoice === "p") || 
+            (playerChoice === "p" && computerChoice === "r") || 
+            (playerChoice === "r" && computerChoice === "s")){
+            //output the computer's choice
+            alert("The computer randomly chose : " + computerChoice);
+            //tell the player they won and increase their win count
+            alert("You won");
+            winCount++;
+        }
+        //player lost
+        else if((playerChoice === "s" && computerChoice === "r") || 
+            (playerChoice === "p" && computerChoice === "s") || 
+            (playerChoice === "r" && computerChoice === "p")){
+            //output the computer's choice
+            alert("The computer randomly chose : " + computerChoice);
+            alert("You lost");
+            //tell the player they lost and increase their loss count
+            lossCount++;
+        }
+        //player tied
+        else{
+            //output the computer's choice
+            alert("The computer randomly chose : " + computerChoice);
+            //tell the player they tied and increase their tie count
+            alert("You tied");
+            tieCount++;
+        }        
+
+        //if the player input a proper choice, show the current score and ask if they wish to play again
+        if(directionally){
+            alert("wins : " + winCount + ", losses : " + lossCount + ", ties : " + tieCount);
+            playAgain = confirm("would you like to play again?");
+            console.log(playAgain);
+        }
+    }
+    </script>
+
+  </body>
+</html>

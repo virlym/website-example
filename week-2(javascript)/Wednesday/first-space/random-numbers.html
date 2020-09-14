@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Random Numbers</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Loop 10 times
+      for (var i = 0; i < 10; i++) {
+        // Generate a random decimal number between 0 and 1
+        var num = Math.random();
+
+        //rounds the number up after multiplying by 10 (1-10)
+        num = Math.ceil(num*10);
+
+        //rounds the number down after multiplying by 10 (0-9)
+        //num = Math.floor(num*10);
+        
+        //sets the cutoff to 2 decimal spaces (0.00 - 0.99)
+        //num = num.toFixed(2);
+
+
+        // Display in console
+        console.log(num);
+      }
+    </script>
+  </body>
+</html>

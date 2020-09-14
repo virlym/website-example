@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Array Printing</title>
+  </head>
+  <body>
+
+    <h1>Open the console to see the magic!</h1>
+
+    <script>
+    //create an array of animals
+    var myFarm = ["chickens", "pigs", "cows", "horses", "ostriches"];
+
+    // for loop runs through the entire animal list
+    for(var i = 0; i < myFarm.length; i++){
+        //output the name of each animal at the current point in the array
+        console.log(myFarm[i]);
+
+        //if the animal name starts with a 'c'
+        if(myFarm[i].charAt(0) === "c"){
+            //create a console log and an alert stating that the animal name started with a c
+            console.log("alert created for 'c'");
+            alert(myFarm[i] + " starts with 'c'!");
+        }
+
+        //if the animal name starts with a 'o'
+        if(myFarm[i].charAt(0) === "o"){
+            //create a console log and an alert stating that the animal name started with a o
+            console.log("alert created for 'o'");
+            alert(myFarm[i] + " starts with 'o'!");
+        }
+      }
+
+    // ...
+
+    </script>
+
+  </body>
+</html>

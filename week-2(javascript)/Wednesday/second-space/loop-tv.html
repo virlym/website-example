@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite TV Shows</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        // ???? push, pop, sift, unsift?
+        //pop = The pop() method removes the last element of an array, and returns that element.
+        //shift = The shift() method removes the first item of an array.
+        //unshift = The unshift() method adds new items to the beginning of an array, and returns the new length
+        //push = The push() method adds new items to the end of an array, and returns the new length.
+
+        //create the variables, an empty array and a string
+        var favTVshows = [];
+        var tvShow;
+
+        // For Loop Elements Repeats 3 Times
+        for (var i = 1; i < 4; i++) {
+
+            // asks what your favorite tv show is in a number grade, number corresponds to where we are in the loop (how many times it has been asked)
+            tvShow = prompt("What's your #" + i + " favorite TV show?");
+
+            // adds your input of a tv show to the end of the array
+            favTVshows.push(tvShow);
+        }
+
+        // checks the length of the array you created with your favorite tv shows and creates a loop that will repeat for each element
+        for (var j = 0; j < favTVshows.length; j++) {
+
+            // prints your favorite show at the current location in the array
+            alert(favTVshows[j]);
+        }
+
+    </script>
+
+</body>
+
+</html>
