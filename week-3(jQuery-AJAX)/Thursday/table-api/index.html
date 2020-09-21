@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Favorite Movies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <form id="movie-form" method="POST">
+        <label for="movie-text">Pick a movie:</label>
+        <input type="text" placeholder="Movie name" name="movie-text" id="movie-text" />
+    </form>
+    <h2>Basic Table</h2>
+    <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <!-- The scope attribute specifies that this is a header for a column -->
+          <th scope="col">Movie Name</th>
+          <th scope="col">Year</th>
+          <th scope="col">Actors</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Interstellar</td>
+          <td>2014</td>
+          <td>Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow</td>
+        </tr>
+        <!-- Insert additional movie rows here -->
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // The below code fills in the first row of the table
+    
+movieInput = $("#movie-text").val();
+
+function addMovie(event){
+    event.preventDefault();
+    if($.trim(movieInput.val()) === ""){
+        return;
+    }
+    movieInfoByTitle($.trim(movieInput.val()));
+    movieInput.text("");
+}
+
+function movieInfoByTitle(title){
+    title = title.replace(/\s+/g, "+");
+    $.ajax({
+      url: "https://www.omdbapi.com/?t=" + title + "&apikey=trilogy",
+      method: "GET"
+    }).then(function(response) {
+      // Create and save a reference to new empty table row
+      var tableRef = $(".table");
+      // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
+      var newRow = $("<tr>");
+      var newTitle = $("<td>");
+      var newYear = $("<td>");
+      var newActors = $("<td>");
+      newTitle.text(response.Title);
+      newYear.text(response.Year);
+      newActors.text(response.Actors);
+      // Append the td elements to the new table row
+      newRow.append(newTitle, newYear, newActors);
+      // Append the table row to the tbody element
+      $("tbody").append(newRow);
+    });
+}
+$("#movie-form").submit(addMovie);
+    // Repeat the above logic to add rows for two more movies of your choice
+
+    // BONUS: Once complete, try to make your code as DRY as possible through the use of functions
+  </script>
+</body>
+
+</html>

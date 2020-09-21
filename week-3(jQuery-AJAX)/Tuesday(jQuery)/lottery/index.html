@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trigger Random</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+  <div class="jumbotron">
+
+    <h1 class="text-center">Generate a Random Number!</h1>
+
+    <div class="text-center">
+
+      <!-- Here we have our button for generating random numbers (#random-button) -->
+      <button id="random-button" class="btn btn-primary btn-lg"><h1><span class="fa fa-question"></span></h1></button>
+      
+    </div>
+
+  </div>
+
+  <!-- Here we have div called "random-number" where our random number will go -->
+  <h1 class="text-center" id="random-number"></h1>
+
+  <script type="text/javascript">
+    var lotCount = 0;
+    $(document).ready(function() {
+
+      // CREATE THE MISSING CODE HERE. Your code should add content to the random-number div.
+      // ...
+        $("#random-button").on("click", function(){
+            //create an empty string to hold the lottery number so that leading 0s aren't dropped
+            var str = "";
+
+            //loop through and grab nine numbers (0-9), and add them to the string
+            for(var i = 0; i < 9; i++){
+                var num = Math.floor(Math.random()*10);
+                str += num;
+            }
+
+            //increase the count variable so you keep track of which lottery number you are collecting
+            lotCount++;
+
+            //create the new div to hold the number content
+            var newDiv = $("<p>");
+
+            //set the text of the newly created dive to include the lottery number and which collection it is
+            newDiv.text(`lottery number ${lotCount} :  ${str}`);
+
+            //clear the div list if needed
+            //$("#random-number").empty();
+
+            //prepend will add the new number to the top of the list
+            $("#random-number").prepend(newDiv);
+
+            //append will add the new number to the bottom of the list
+            //$("#random-number").append(newDiv);
+
+            //if you wanted to post the lottery number without creating a new div
+            //$("#random-number").text(`Your lottery number is :  ${str}`);
+        });
+      // ...
+
+    });
+
+  </script>
+  
+</body>
+</html>

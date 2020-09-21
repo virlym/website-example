@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic jQuery Dump</title>
+
+  <!-- Added link to the jQuery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <h1>Drink Selection!</h1>
+    <hr>
+  
+    <div id="drink-options"></div>
+  
+    <script type="text/javascript">
+  
+      var drinkList = [
+        "Coffee: $5",
+        "Espresso: $7",
+        "Cappuccino: $6",
+        "Latte: $4",
+        "Tea: $3",
+        "Ice Coffee: $6",
+        "Ice Espresso: $8",
+        "Ice Latte: $6",
+        "Ice Tea: $4"
+      ];
+  
+      // Using JavaScript programmatically append each drinkList item to the "drink-options" div
+      // HINT: you will need a for loop to go over each element in the list
+      var targetDiv = $("#drink-options");
+
+    for (var i = 0; i < drinkList.length; i++){
+        // jQuery alternative to: var newDiv = document.createElement("div");
+        var newDiv = $("<p>");
+
+        // jQuery alternative to: newDiv.textContent
+        newDiv.text(drinkList[i]);
+
+        // jQuery alternative to: document.querySelector("#empty-div").appendChild(newDiv);
+        targetDiv.append(newDiv);
+    }
+
+    var newDiv = $("<p>");
+    newDiv.text("~~~~~~~~~~~ loop division ~~~~~~~~~~~~");
+    targetDiv.append(newDiv);
+
+    //create a forEach loop declaration
+    drinkList.forEach(newFunction);
+
+    //create the function to handle the forEach loop
+    function newFunction(item, index){
+        //item passed = the value of the array at the current index
+        //can add a second passed variable of 'index' to keep track of where in the array you are
+        var newDiv = $("<p>");
+        newDiv.text(`${index + 1} : ${item}`);
+        targetDiv.append(newDiv);
+    }
+
+  </script>
+
+</body>
+</html>
