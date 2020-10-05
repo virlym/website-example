@@ -19,16 +19,28 @@
     // dada94c0136618837ce84cf6e665b103
     // Create an AJAX call to retrieve data Log the data in console
     $.ajax({
-      url: "http://api.openweathermap.org/data/2.5/weather?q=Covington,us&appid=dada94c0136618837ce84cf6e665b103",
+      url: "http://api.openweathermap.org/data/2.5/forecast?q=Covington&units=imperial&appid=dada94c0136618837ce84cf6e665b103", //"http://api.openweathermap.org/data/2.5/weather?q=Covington,us&appid=dada94c0136618837ce84cf6e665b103",
       method: "GET"
     }).then(function(response) {
         console.log(response);
-        console.log(`City : ${response.name}`);
-        console.log(`Wind Speed : ${response.wind.speed}`);
-        console.log(`Humidity : ${response.main.humidity}`);
+        console.log(`City : ${response.city.name}`);
+        console.log(`Wind Speed : ${response.list[0].wind.speed}`);
+        console.log(`Humidity : ${response.list[0].main.humidity}`);
         //1.8(K - 273) + 32
-        console.log(`Temperature : ${parseFloat(((1.8 * (response.main.temp - 273)) +32)).toFixed(2)} F`);
+        console.log(`Temperature : ${response.list[0].main.temp} F`);//${parseFloat(((1.8 * (response.main.temp - 273)) +32)).toFixed(2)} F`);
+      var lat = response.city.coord.lat;
+      var long = response.city.coord.lon;
+
+      $.ajax({
+        url: `http://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${long}&appid=dada94c0136618837ce84cf6e665b103`,
+        method: "GET"
+      }).then(function(response){
+        console.log(response);
+        console.log(` UV Index : ${response[0].value}`);
+      });
     });
+
+    //api.openweathermap.org/data/2.5/forecast?q={Covington}&appid={dada94c0136618837ce84cf6e665b103}
     // Log the data in HTML
     // Scream Ushindi (victory in Swahili)! at the top of your lungs
     /*
