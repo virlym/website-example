@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Adding and Getting Data</title>
+  </head>
+
+  <body>
+    <h1>Open Your Developer Tools > Application > IndexedDB</h1>
+    <script>
+      const request = window.indexedDB.open("toDoList", 1);
+      
+      request.onupgradeneeded = event => {
+        const db = event.target.result;
+       // CODE HERE
+       // Creates an object store with a listID keypath that can be used to query on.
+       const toDoListStore = db.createObjectStore("toDoList", {keyPath: "listID", autoIncrement: true});
+        // Creates a statusIndex that we can query on.
+        toDoListStore.createIndex("dueDateIndex", "dueDate"); 
+      }
+
+      
+      // Opens a transaction, accesses the toDoList objectStore and statusIndex.
+      request.onsuccess = () => {
+        const db = request.result;
+        const transaction = db.transaction(["toDoList"], "readwrite");
+        const toDoListStore = transaction.objectStore("toDoList");
+        const dueDateIndex = toDoListStore.index("dueDateIndex");
+        
+        toDoListStore.clear();
+  
+        // Adds data to our objectStore
+        toDoListStore.add({ dueDate: "11/2" });
+        toDoListStore.add({ dueDate: "11/4" });
+        toDoListStore.add({ dueDate: "11/4" });
+        toDoListStore.add({ dueDate: "11/5" });
+       
+        // Return an item by keyPath
+        const indexCount = dueDateIndex.count();
+        indexCount.onsuccess = function() {
+          const randomGet = Math.floor(Math.random() * indexCount.result) + 1;
+          console.log(` id to get : ${randomGet}`);
+          const getRequest = toDoListStore.get(randomGet);
+          getRequest.onsuccess = () => {
+            console.log(getRequest.result);
+          };
+
+          // Return an item by index
+          const getRequestIdx = dueDateIndex.getAll("11/4");
+          getRequestIdx.onsuccess = () => {
+            console.log(getRequestIdx.result); 
+          }; 
+        }       
+      };
+
+    </script>
+  </body>
+</html>
+
+
+      

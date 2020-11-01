@@ -1,0 +1,9 @@
+use classroom;
+db.classroom.insert({name: "devin", rownumber: 1, os: "Win", hobbies: ["reading", "video games"]});
+db.classroom.insert({name: "jose", rownumber: 1, os: "Mac", hobbies: ["sports", "parties"]});
+db.classroom.insert({name: "kirstin", rownumber: 2, os: "Win", hobbies: ["reading", "baking"]});
+db.classroom.insert({name: "issy", rownumber: 2, os: "Mac", hobbies: ["pet care", "video games"]});
+
+db.classroom.find({rownumber: "1"}).pretty();
+db.classroom.find({name: "issy"}).pretty();
+db.classroom.find({os: "Mac"}, {rownumber: 1}).pretty();
